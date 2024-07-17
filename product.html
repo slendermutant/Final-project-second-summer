@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listings - ShmoeStyle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .search-bar {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+        .search-bar input[type="text"] {
+            padding: 5px;
+            font-size: 16px;
+            border: none;
+            border-radius: 3px;
+        }
+        .search-bar input[type="submit"] {
+            padding: 5px 10px;
+            font-size: 16px;
+            border: none;
+            background: #fff;
+            color: #333;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .product {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+        }
+        .product h2 {
+            color: #444;
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+        .product p {
+            color: #777;
+            font-size: 1em;
+            line-height: 1.6;
+        }
+        .product .price {
+            color: #333;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Local businesses</h1>
+            <div class="search-bar">
+                <form action="#" method="GET">
+                    <input type="text" name="search" placeholder="Search businesses...">
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="products">
+            <!-- Product 1 -->
+            <div class="product">
+                <img src="joe.png" alt="Product 1">
+                <h2>Joe shmoe's shop</h2>
+                <p>This is joe Shmoe's shop. Joe loves making clothes</p>
+                <p class="price">fashion Shop</p>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product">
+                <img src="grocery.png" alt="Product 2">
+                <h2>GreenLeaf Grocers</h2>
+                <p>GreenLeaf Grocers is an organic grocery store specializing in locally sourced, sustainable produce and eco-friendly products. They aim to promote healthy eating and environmental responsibility within the community.</p>
+                <p class="price">well-being and nutrition</p>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product">
+                <img src="tech.png" alt="Product 3">
+                <h2>TechSavvy Solutions</h2>
+                <p>TechSavvy Solutions provides cutting-edge IT services and tech support for small to medium-sized businesses. Their services range from network setup and cybersecurity to custom software development and cloud integration.</p>
+                <p class="price">Tech Help</p>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product">
+                <img src="bread.png" alt="Product 4">
+                <h2>Bella's Bakery</h2>
+                <p>Bella's Bakery is a family-owned bakery renowned for its artisanal breads, pastries, and cakes made from scratch. They use only the finest ingredients to create delicious, freshly baked goods for all occasions.</p>
+                <p class="price">Bakery</p>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product">
+                <img src="leaf.png" alt="Product 5">
+                <h2>EcoHome Innovations</h2>
+                <p>EcoHome Innovations designs and manufactures sustainable home improvement products, including energy-efficient windows, solar panels, and eco-friendly insulation. Their mission is to help homeowners reduce their carbon footprint and save on energy costs.</p>
+                <p class="price">Home and Enviroment Improvement </p>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product">
+                <img src="run.webp" alt="Product 6" height="150" width="300">
+                <h2>UrbanFit Studio</h2>
+                <p>UrbanFit Studio is a modern fitness center offering a variety of group classes, personal training, and wellness programs. With state-of-the-art equipment and experienced trainers, they cater to all fitness levels and goals.</p>
+                <p class="price">Fitness</p>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product">
+                <img src="flower.png" alt="Product 7">
+                <h2>Creative Bloom Marketing</h2>
+                <p>Creative Bloom Marketing is a full-service marketing agency specializing in digital marketing, branding, and social media management. They help businesses grow their online presence and reach their target audience effectively.</p>
+                <p class="price">digital Marketing</p>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product">
+                <img src="paw.png" alt="Product 8">
+                <h2>Paws & Claws Veterinary Clinic</h2>
+                <p>Paws & Claws Veterinary Clinic provides comprehensive veterinary care for pets, including routine check-ups, vaccinations, surgeries, and emergency services. Their compassionate team is dedicated to ensuring the health and well-being of every animal.</p>
+                <p class="price">Pet Care</p>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product">
+                <img src="ohyeah.png" alt="Product 9">
+                <h2>LuxeVoyage Travel Agency</h2>
+                <p>LuxeVoyage Travel Agency specializes in crafting personalized luxury travel experiences, from exotic beach getaways to cultural city tours. They offer tailored itineraries, exclusive accommodations, and unique excursions to create unforgettable vacations.</p>
+                <p class="price">Travel help</p>
+            </div>
+
+            <!-- Add more products as needed -->
+        </div>
+    </div>
+    <a href="index.html">Back Home</a>
+    <footer>
+        <p>&copy; 2024 Singuleirity. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+

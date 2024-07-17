@@ -1,0 +1,36 @@
+ /* Basic CSS for demonstration */
+
+   /* boarder sign in below home above*/
+
+
+/*boarder obove login below contact*/
+        .contact {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .contact form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact label, input, textarea {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .contact textarea {
+            height: 100px;
+        }
+        .contact input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .contact input[type="submit"]:hover {
+            background-color: #45a049;
+        }

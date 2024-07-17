@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - ShmoeStyle</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            background-image: url(background.jpeg);
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .search-bar {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+        .search-bar input[type="text"] {
+            padding: 5px;
+            font-size: 16px;
+            border: none;
+            border-radius: 3px;
+        }
+        .search-bar input[type="submit"] {
+            padding: 5px 10px;
+            font-size: 16px;
+            border: none;
+            background: #fff;
+            color: #333;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .product {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+        }
+        .product h2 {
+            color: #444;
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+        .product p {
+            color: #777;
+            font-size: 1em;
+            line-height: 1.6;
+        }
+        .product .price {
+            color: #333;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        nav {
+            background: #444;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+        nav a:hover {
+            background: #555;
+        }
+        a{
+            text-decoration: none;
+           color: white; 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>ShmoeStyle Shop</h1>
+            <div class="search-bar">
+                <form action="#" method="GET">
+                    <input type="text" name="search" placeholder="Search products...">
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="product.html">Shop</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="products">
+            <!-- Product 1 -->
+            <div class="product">
+                <img src="clothes1.png" alt="Product 1">
+                <h2>Product Name 1</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum.</p>
+                <p class="price">$19.99</p>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product">
+                <img src="clothes2.png" alt="Product 2">
+                <h2>Product Name 2</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum.</p>
+                <p class="price">$29.99</p>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product">
+                <img src="suit.png" alt="Product 3">
+                <h2>Product Name 3</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum.</p>
+                <p class="price">$39.99</p>
+            </div>
+
+            <!-- Add more products as needed -->
+        </div>
+    </div>
+    <a href="index.html">&larr;go back home</a>
+    <footer>
+        <p>&copy; 2024 ShmoeStyle. All rights reserved.</p>
+    </footer>
+</body>
+</html>
