@@ -71,7 +71,7 @@
 </head>
 <div class="logosign">
 <header>
-    <a href="index.html">&larr; Go Back Home</a>
+    <a href="homepage.html">&larr; Go Back Home</a>
     <img src="LGONAME.png" alt="logo-name" style="width: 400px; height: 200px;">
 </header>
 </div>
@@ -87,5 +87,78 @@
             <input type="submit" value="Login">
         </form>
     </div>
+    <script>
+    function login(event) {
+        event.preventDefault(); // prevent form from submitting the traditional way
+        const form = event.target;
+        const formData = new FormData(form);
+        const data = {
+             username: formData.get('loginUname'),
+             password: formData.get('loginPsw')
+        };
+
+        fetch('http://localhost:9999/login', {
+             method: 'POST',
+             headers: {
+                     'Content-Type': 'application/json'
+             },
+             body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                window.location.href = 'homepage.html.html';
+            } else {
+                return response.text().then(text => {throw new Error(text); });
+            }
+        })
+        .catch(error => {
+            console.error('Login error:', error);
+            alert('Login failed; ' + error.message);
+        })
+    }
+    function register(event) {
+        event.preventDefault(); // Prevent form from submitting the traditional way
+        const form = event.target;
+        const formData = new FormData(form);
+        const data = {
+            username: formData.get('registerUname'),
+            password: formData.get('registerPsw')
+        };
+
+        fetch('http://localhost:9999/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok){
+                alert("Registration Sucessful!");
+                document.getElementById('registerModal').style.display = 'none';
+            } else {
+                return response.text().then(text => {throw new Error(text); });
+            }
+        })
+        .catch(error => {
+            console.error('Registration error', error);
+            alert('Registration failed: ' + error.message);
+        });
+    }
+
+    // Get the modals
+    var loginModal = document.getElementById('loginModal');
+    var registerModal = document.getElementById('registerModal');
+
+    // when user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == loginModal) {
+            loginModal.style.display = "none";
+        }
+        if (event.target == registerModal) {
+            registerModal.style.display = "none";
+        }
+    }
+    </script>
 </body>
 </html>

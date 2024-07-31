@@ -2,7 +2,7 @@ import sqlite3
 import hashlib
 #connect to the SQLite database name 'user.db'
 #if the database does not exist it wil be created
-conn = sqlite3.connect("user.db")
+conn = sqlite3.connect("userdata.db")
 cur = conn.cursor() #this creates a cursor object to interact with a databse
 cur.execute( """
 CREATE TABLE IF NOT EXISTS userdata(

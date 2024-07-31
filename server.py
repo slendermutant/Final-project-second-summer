@@ -1,54 +1,41 @@
 import sqlite3
 import hashlib
-import socket
-import threading
-def handle_connection(c):
-    try:
-        print("Client Connected")
-        #Send a prompt to the client asking for the username
-        c.send("Username:".encode())
-        # Recieve the username from the client
-        username = c.recv(1024).decode().strip()
-        print(f"Recieved username:{username}")
-        #Send a prompt to the client asking for the password
-        c.send("Password: ".encode())
-        #Recieve the password from the client
-        password = c.recv(1024).decode().strip()
-        print(f"Recoeved password (pre-hash): {password}")
-        #Hash the password using Sha-256 for security
-        password = hashlib.sha256(password.encode()).hexdigest()
-        print(f"Hashed password: {password}")
-        #Connect to the Sqlite databse
-        conn = sqlite3.connect("user.db")
-        cur = conn.cursor()
-        #Check if the username and hashed password match any entry in the databse
-        cur.execute("SELECT * FROM userdata WHERE username = ? AND password = ?", (username, password))
-        # If a match is found, send a success message to the client
-        if cur.fetchone():
-            c.send ("Login Successfully!".encode())
-            print ("Login successful")
-# If no match is found, send a failure message to the client
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import json
+class RequestHandler(BaseHTTPRequestHandler):
+    def _set_headers(self, status_code=200):
+        self.send_response(status_code)
+        self.send_header('Content-Type', 'text/plain')
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+        self.end_headers()
+    def do_OPTIONS(self):
+        self._set_headers()
+    def do_POST(self):
+        if self.path == '/login':
+            content_length = int(self.headers['Content-Length'])
+            post_data = self.rfile.read(content_length)
+            data = json.loads(post_data)
+            username = data['username']
+            password = hashlib.sha256(data['password'].encode()).hexdigest()
+            conn = sqlite3.connect("userdata.db")
+            cur = conn.cursor()
+            cur.execute("SELECT * FROM userdata WHERE username = ? AND password = ?", (username, password))
+            if cur.fetchall():
+                self._set_headers(200)
+                self.wfile.write("Login Successful!".encode())
+            else:
+                self._set_headers(401)
+                self.wfile.write("Login Failed!".encode())
+            conn.close()
         else:
-            c.send ("Login Failed!".encode())
-            print ("Login Failed!")
-#Close the database connection
-        conn.close()
-    except Exception as e:
-        #If an error ocurs, print the error and send an error message to the client
-        print(f"Error: {str(e)}")
-        c.send(f"Error: {str(e)}".encode())
-    finally:
-        #close the client connection
-        c.close()
-# Create a socket object for the server
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# Bind the server to localhost on port 3333
-server.bind(("localhost", 3333))
-# Start listening for incoming connections
-server.listen()
-print("Server started on port 3333...")
-while True:
-# Accept an incoming clicht connection
-    client, addr = server.accept()
-# Handle the client connection in a new thread
-    threading.Thread(target=handle_connection, args=(client,)).start()
+            self._set_headers(404)
+            self.wfile.write("Not Found".encode())
+def run(server_class=HTTPServer, handler_class=RequestHandler, port=9999):
+    server_address = ('', port)
+    httpd = server_class(server_address, handler_class)
+    print(f'Server running on port {port}')
+    httpd.serve_forever()
+if __name__ == '__main__':
+    run()
